@@ -1,5 +1,6 @@
 import "CoreLibs/graphics"
 import "gameState"
+import "components/Button"
 
 local gfx<const> = playdate.graphics
 
@@ -19,5 +20,6 @@ local inputHandlers = {
 
 function homeScreen()
     playdate.inputHandlers.push(inputHandlers)
-    gfx.drawText("hello " .. gameState.player.name, 20, 20)
+    local btn = Button("Create Player", 20, 20)
+    btn:draw()
 end
