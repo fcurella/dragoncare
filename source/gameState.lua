@@ -1,3 +1,4 @@
 import "lib/Stack"
+import "models/Hero"
 
-gameState = {history = Stack({'home'}), inventory = {}, player = nil}
+gameState = {history = Stack({'home'}), inventory = {}, player = Hero()}

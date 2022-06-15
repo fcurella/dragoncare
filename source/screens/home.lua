@@ -19,5 +19,5 @@ local inputHandlers = {
 
 function homeScreen()
     playdate.inputHandlers.push(inputHandlers)
-    gfx.drawText("hello world", 20, 20)
+    gfx.drawText("hello " .. gameState.player.name, 20, 20)
 end
