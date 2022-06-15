@@ -1,8 +1,11 @@
 import "CoreLibs/graphics"
+import "CoreLibs/keyboard"
+import "gameState"
+import "screens/routes"
 
-local gfx <const> = playdate.graphics
+local gfx<const> = playdate.graphics
 
-function playdate.update() 
+function playdate.update()
     gfx.clear()
-    gfx.drawText("Hello World", 20, 20)
+    routes[gameState.history:last()]()
 end
