@@ -4,7 +4,7 @@ import "CoreLibs/graphics"
 local gfx<const> = playdate.graphics
 
 class('Button', {selected = false, onClick = nil}).extends()
-function Button:init(text, x, y, selected)
+function Button:init(text, x, y, selected, onClick)
     Button.super.init(self)
     self.radius = 4
     self.text = text

@@ -7,10 +7,13 @@ function Router:init(routes, initial)
     self.routes = routes
     self.history = Stack({initial})
 end
-
-function Router:push(route) self.history:push(route) end
+function Router:current() return self.routes[self.history:last()] end
+function Router:push(route)
+    self:current():unload()
+    self.history:push(route)
+end
 function Router:pop()
     local last = self.history:pop(route)
+    last:unload()
     return self.routes[last]
 end
-function Router:current() return self.routes[self.history:last()] end

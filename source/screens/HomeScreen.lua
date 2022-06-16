@@ -6,18 +6,17 @@ import "components/Button"
 
 local gfx<const> = playdate.graphics
 
-local function goToPlayer() gameState.history:push("newPlayer") end
+local function goToPlayer() gameState.router:push("newPlayer") end
 
 local btn1 = Button("Create Player", 20, 20, true, goToPlayer)
 local btn2 = Button("Create Player", 20, 55)
 
 local inputHandlers = {
-    AButtonDown = function() playdate.inputHandlers.pop() end,
+    AButtonDown = function() btn1:click() end,
 
     downButtonDown = function()
         btn1.selected = false
         btn2.selected = true
-        print("down")
     end,
     cranked = function(change, acceleratedChange)
         -- do other stuff
