@@ -1,4 +1,4 @@
-import "lib/Stack"
 import "models/Hero"
+import "router"
 
-gameState = {history = Stack({'home'}), inventory = {}, player = Hero()}
+gameState = {router = router, inventory = {}, player = Hero()}
