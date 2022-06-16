@@ -12,7 +12,7 @@ local function updateText()
     playerName = keyboard.text
     gfx.drawText(playerName, 20, 20)
 end
-local function setName(pressedOk)
+local function setName()
     gameState.player.name = playerName
     gameState.router:push("home")
 end
