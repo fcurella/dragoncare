@@ -1,8 +1,8 @@
 import "CoreLibs/graphics"
+import "CoreLibs/object"
+import "lib/Screen"
 import "gameState"
 import "components/Button"
-import "Screen"
-import "CoreLibs/object"
 
 local gfx<const> = playdate.graphics
 

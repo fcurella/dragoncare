@@ -1,8 +1,8 @@
 import "CoreLibs/graphics"
 import "CoreLibs/keyboard"
-import "gameState"
-import "Screen"
 import "CoreLibs/object"
+import "lib/Screen"
+import "gameState"
 
 local gfx<const> = playdate.graphics
 local keyboard<const> = playdate.keyboard

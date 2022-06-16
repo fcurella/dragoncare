@@ -1,4 +1,5 @@
-import "Screen"
+import "lib/Screen"
+
 class('TestScreen').extends(Screen)
 function TestScreen:onLoad()
     TestScreen.super.onLoad()
