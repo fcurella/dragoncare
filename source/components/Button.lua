@@ -1,15 +1,14 @@
 import "CoreLibs/object"
 import "CoreLibs/graphics"
+import "FormElement"
 
 local gfx<const> = playdate.graphics
 
-class('Button', {selected = false, onClick = nil}).extends()
-function Button:init(text, x, y, selected, onClick)
-    Button.super.init(self)
+class('Button', {onClick = nil}).extends(FormElement)
+function Button:init(x, y, name, attrs, text, onClick)
+    Button.super.init(self, x, y, name, attrs)
     self.radius = 4
     self.text = text
-    self.x = x
-    self.y = y
     local padding_h = 12
     local padding_v = 6
     local w, h = gfx.getTextSize(text)
@@ -19,26 +18,17 @@ function Button:init(text, x, y, selected, onClick)
     self.text_y = y + padding_v
     self.rect = playdate.geometry.rect.new(self.x, self.y, self.width,
                                            self.height)
-    self.selected = selected
     self.onClick = onClick
 end
 
-function Button:draw()
-    if (self.selected == true) then
-        self:focus()
-    else
-        self:blur()
-    end
-end
-
-function Button:focus()
+function Button:drawFocus()
     gfx.setColor(gfx.kColorBlack)
     gfx.fillRoundRect(self.rect, self.radius)
     gfx.setImageDrawMode(gfx.kDrawModeFillWhite)
     gfx.drawText(self.text, self.text_x, self.text_y)
 end
 
-function Button:blur()
+function Button:drawBlur()
     gfx.setColor(gfx.kColorWhite)
     gfx.fillRoundRect(self.rect, self.radius)
     gfx.setColor(gfx.kColorBlack)
