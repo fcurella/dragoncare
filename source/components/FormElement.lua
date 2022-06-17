@@ -1,11 +1,10 @@
 import "CoreLibs/object"
+import "BaseComponent"
 
-class('FormElement').extends()
+class('FormElement').extends(BaseComponent)
 function FormElement:init(x, y, name, attrs)
-    FormElement.super.init(self)
+    FormElement.super.init(self, x, y)
     self.name = name
-    self.x = x
-    self.y = y
     self.attrs = attrs
 end
 

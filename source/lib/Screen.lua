@@ -8,19 +8,18 @@ end
 
 -- override these methods
 function Screen:onUnload() end
-function Screen:update() end
-function Screen:onLoad() end
-function Screen:onUpdate() end
+function Screen:onLoad(state) end
+function Screen:onUpdate(state) end
 
-function Screen:loadScreen()
+function Screen:loadScreen(state)
     self.loaded = true
-    self:onLoad()
+    self:onLoad(state)
 end
 function Screen:unload()
     self.loaded = false
     self:onUnload()
 end
-function Screen:update()
-    if (not self.loaded) then self:loadScreen() end
-    self:onUpdate()
+function Screen:update(state)
+    if (not self.loaded) then self:loadScreen(state) end
+    self:onUpdate(state)
 end

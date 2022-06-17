@@ -1,3 +1,3 @@
 import "gameState"
 
-function playdate.update() gameState.router:current():update() end
+function playdate.update() gameState.router:current():update(gameState) end

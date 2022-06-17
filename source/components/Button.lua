@@ -8,17 +8,21 @@ class('Button', {onClick = nil}).extends(FormElement)
 function Button:init(x, y, name, attrs, text, onClick)
     Button.super.init(self, x, y, name, attrs)
     self.radius = 4
+    self.padding_h = 12
+    self.padding_v = 6
     self.text = text
-    local padding_h = 12
-    local padding_v = 6
     local w, h = gfx.getTextSize(text)
-    self.width = w + (padding_h * 2)
-    self.height = h + (padding_v * 2)
-    self.text_x = x + padding_h
-    self.text_y = y + padding_v
+    self.width = w + (self.padding_h * 2)
+    self.height = h + (self.padding_v * 2)
+    self.onClick = onClick
+end
+
+function Button:draw()
     self.rect = playdate.geometry.rect.new(self.x, self.y, self.width,
                                            self.height)
-    self.onClick = onClick
+    self.text_x = self.x + self.padding_h
+    self.text_y = self.y + self.padding_v
+    Button.super.draw(self)
 end
 
 function Button:drawFocus()
