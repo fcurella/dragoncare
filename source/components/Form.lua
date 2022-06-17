@@ -7,7 +7,12 @@ function Form:init(items)
     self.tabindex = 1
 end
 
-function Form:draw() for i, element in ipairs(self.items) do element:draw() end end
+function Form:draw()
+    for i, element in ipairs(self.items) do
+        element:draw()
+        coroutine.yield()
+    end
+end
 
 function Form:focus(name)
     for i, element in ipairs(self.items) do
@@ -30,5 +35,11 @@ function Form:nextElement()
             element:blur()
         end
         element:draw()
+    end
+end
+
+function Form:getElementByName(name)
+    for i, element in ipairs(self.items) do
+        if (element.name == name) then return element end
     end
 end

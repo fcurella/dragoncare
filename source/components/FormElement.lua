@@ -17,10 +17,19 @@ function FormElement:draw()
     end
 end
 
-function FormElement:focus() self.attrs.selected = true end
+function FormElement:focus()
+    self.attrs.selected = true
+    self:onFocus()
+end
 
-function FormElement:blur() self.attrs.selected = false end
+function FormElement:blur()
+    self.attrs.selected = false
+    self:onBlur()
+end
 
 function FormElement:drawFocus() end
 
 function FormElement:drawBlur() end
+
+function FormElement:onFocus() end
+function FormElement:onBlur() end
