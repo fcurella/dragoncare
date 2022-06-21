@@ -12,15 +12,15 @@ function goToPlayer() gameState.router:push("newPlayer") end
 class('HomeScreen').extends(Screen)
 function HomeScreen:onLoad(state)
     gfx.clear()
-    print(state)
-
-    local btnNew = Button(0, 0, "btnNew", {selected = true}, "Create Player",
-                          goToPlayer)
-
     local buttons = {}
     for i, player in ipairs(state.players) do
-        print("player" .. i, player.name)
-        local btn = Button(0, 0, "player" .. i, {}, player.name)
+        local btn
+        if (player ~= false) then
+            btn = Button(0, 0, "player" .. i, {}, player.name, 140)
+        else
+            btn = Button(0, 0, "btnNew" .. i, {}, "Create Player", 140,
+                         goToPlayer)
+        end
         table.insert(buttons, btn)
     end
     table.insert(buttons, btnNew)
