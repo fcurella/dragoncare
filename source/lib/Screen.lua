@@ -22,4 +22,5 @@ end
 function Screen:update(state)
     if (not self.loaded) then self:loadScreen(state) end
     self:onUpdate(state)
+    coroutine.yield()
 end

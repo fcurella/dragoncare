@@ -1,5 +1,7 @@
 import "CoreLibs/object"
+import "CoreLibs/ui"
 import "BaseComponent"
+
 
 class('Form', {items = {}, orientation = "vertical"}).extends(BaseComponent)
 function Form:init(x, y, items, orientation)
@@ -8,25 +10,24 @@ function Form:init(x, y, items, orientation)
     self.tabindex = 1
     self.padding = 5
     self.orientation = orientation
+
+    self.listview = playdate.ui.gridview.new(0, 10)
+    self.listview:setNumberOfRows(#self.items)
+    self.listview:setCellPadding(0, 0, 5, 0)
+    self.listview:setCellSize(0, 30)
+    function self.listview:drawCell(section, row, column, selected, x, y, width, height)
+        local element = items[row]
+        element.x = x
+        element.y = y
+        element.width = width
+        element.height = height
+        element.attrs.selected = selected
+        element:draw()
+    end
 end
 
 function Form:draw()
-    for i, element in ipairs(self.items) do
-        local xItem = self.x
-        local yItem
-        if (self.orientation == "vertical") then
-            if (i == 1) then
-                yItem = self.y
-            else
-                local previousRect = self.items[i - 1].rect
-                yItem = previousRect.y + previousRect.height + self.padding
-            end
-        end
-        element.x = xItem
-        element.y = yItem
-        element:draw()
-        coroutine.yield()
-    end
+    self.listview:drawInRect(self.x, self.y, 160, 210)
 end
 
 function Form:focus(name)
