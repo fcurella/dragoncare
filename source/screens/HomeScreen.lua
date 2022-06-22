@@ -8,6 +8,7 @@ import "gameState"
 local gfx<const> = playdate.graphics
 
 function goToPlayer() gameState.router:push("newPlayer") end
+function goToPond() gameState.router:push("pond") end
 
 class('HomeScreen').extends(Screen)
 function HomeScreen:onLoad(state)
@@ -16,7 +17,7 @@ function HomeScreen:onLoad(state)
     for i, player in ipairs(state.players) do
         local btn
         if (player ~= false) then
-            btn = Button(0, 0, "player" .. i, {}, player.name, 140)
+            btn = Button(0, 0, "player" .. i, {}, player.name, 140, goToPond)
         else
             btn = Button(0, 0, "btnNew" .. i, {}, "Create Player", 140,
                          goToPlayer)
