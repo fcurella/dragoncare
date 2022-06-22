@@ -2,7 +2,6 @@ import "CoreLibs/object"
 import "CoreLibs/ui"
 import "BaseComponent"
 
-
 class('Form', {items = {}, orientation = "vertical"}).extends(BaseComponent)
 function Form:init(x, y, items, orientation)
     Form.super.init(self, x, y)
@@ -15,7 +14,8 @@ function Form:init(x, y, items, orientation)
     self.listview:setNumberOfRows(#self.items)
     self.listview:setCellPadding(0, 0, 5, 0)
     self.listview:setCellSize(0, 30)
-    function self.listview:drawCell(section, row, column, selected, x, y, width, height)
+    function self.listview:drawCell(section, row, column, selected, x, y, width,
+                                    height)
         local element = items[row]
         element.x = x
         element.y = y
@@ -26,9 +26,7 @@ function Form:init(x, y, items, orientation)
     end
 end
 
-function Form:draw()
-    self.listview:drawInRect(self.x, self.y, 160, 210)
-end
+function Form:draw() self.listview:drawInRect(self.x, self.y, 160, 210) end
 
 function Form:focus(name)
     for i, element in ipairs(self.items) do
