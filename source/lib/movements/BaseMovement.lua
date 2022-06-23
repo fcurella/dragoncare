@@ -8,6 +8,7 @@ function BaseMovement:init(origin, target)
     self.origin = origin
     self.target = target
     self.speed = speed
+    self.tolerance = 4
     self.v = self.target - self.origin
     self.normal = self.v:normalized()
 end
