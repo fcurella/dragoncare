@@ -3,7 +3,7 @@ import "lib/movements/BaseMovement"
 import "CoreLibs/graphics"
 
 class("GoStraight").extends(BaseMovement)
-function GoStraight:update(speed)
+function GoStraight:updateLocation(speed)
     if (self.origin:distanceToPoint(self.target) < self.tolerance) then
         return self.origin
     end
