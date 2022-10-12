@@ -1,6 +1,5 @@
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
-import "lib/movements/GoStraight"
 import "lib/movements/CluelessWanderer"
 import "Food"
 
@@ -24,10 +23,8 @@ function Fish:init(nutritionalValue)
 end
 
 function Fish:update()
-    if not (self.eating) then
-        self.position = self.movement:update(5)
-        self.sprite:moveTo(self.position.x, self.position.y)
-    end
+    self.position = self.movement:update(5)
+    self.sprite:moveTo(self.position.x, self.position.y)
 end
 
 function Fish:startEating()
