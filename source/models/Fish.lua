@@ -29,11 +29,8 @@ end
 
 function Fish:startEating()
     self.movement:pause()
-    playdate.timer.new(self.hunger * 1000, function(fish)
-        fish:finishEating()
-    end, self)
+    playdate.timer.new(self.hunger * 1000,
+                       function(fish) fish:finishEating() end, self)
 end
 
-function Fish:finishEating()
-    self.movement:resume()
-end
+function Fish:finishEating() self.movement:resume() end

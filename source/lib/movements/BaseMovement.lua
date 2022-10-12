@@ -26,18 +26,12 @@ function BaseMovement:setPosition(point)
     self.normal = self.v:normalized()
 end
 
-function BaseMovement:pause()
-    self.running = false
-end
+function BaseMovement:pause() self.running = false end
 
-function BaseMovement:resume()
-    self.running = true
-end
+function BaseMovement:resume() self.running = true end
 
 function BaseMovement:update(speed)
-    if (self.running) then
-        self:updateLocation(speed)
-    end
+    if (self.running) then self:updateLocation(speed) end
     return self.position
 end
 
