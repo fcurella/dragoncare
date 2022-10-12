@@ -23,6 +23,7 @@ function PondScreen:onUpdate()
         fish:update()
         if (self.hook:isCloseTo(fish)) then
             playdate.display.setInverted(true)
+            fish:startEating()
         end
     end
 end

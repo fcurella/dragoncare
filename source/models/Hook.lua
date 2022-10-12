@@ -12,6 +12,7 @@ function Hook:init()
     self.position = playdate.geometry.point.new(200, 100)
     local spriteImg = gfx.image.new("assets/bobber")
     self.sprite = gfx.sprite.new(spriteImg)
+    self.bobbing = false
     self.sprite:add()
 end
 
