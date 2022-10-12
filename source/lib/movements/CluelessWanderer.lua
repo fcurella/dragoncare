@@ -16,8 +16,8 @@ function CluelessWanderer:init(origin, boundsRect, minDistance, updateRate)
 end
 
 function CluelessWanderer:newTarget()
-    local target = self.origin:copy()
-    while (self.origin:distanceToPoint(target) < self.minDistance) do
+    local target = self.position:copy()
+    while (self.position:distanceToPoint(target) < self.minDistance) do
         local x = math.floor(math.random(self.boundsRect.x, self.boundsRect.x + self.boundsRect.width))
         local y = math.floor(math.random(self.boundsRect.y, self.boundsRect.y + self.boundsRect.height))
         target = playdate.geometry.point.new(x, y)

@@ -6,8 +6,8 @@ class("BaseMovement").extends()
 function BaseMovement:init(origin, target)
     BaseMovement.super.init(self, origin, target)
     self.origin = origin
+    self.position = origin
     self.target = target
-    self.speed = speed
     self.tolerance = 4
     self.v = self.target - self.origin
     self.normal = self.v:normalized()
@@ -16,13 +16,13 @@ end
 
 function BaseMovement:setTarget(point)
     self.target = point
-    self.v = self.target - self.origin
+    self.v = self.target - self.position
     self.normal = self.v:normalized()
 end
 
-function BaseMovement:setOrigin(point)
-    self.origin = point
-    self.v = self.target - self.origin
+function BaseMovement:setPosition(point)
+    self.position = point
+    self.v = self.target - self.position
     self.normal = self.v:normalized()
 end
 
@@ -38,7 +38,7 @@ function BaseMovement:update(speed)
     if (self.running) then
         self:updateLocation(speed)
     end
-    return self.origin
+    return self.position
 end
 
 function BaseMovement:updateLocation(speed) end
