@@ -11,7 +11,4 @@ function Hook:init(position)
     self.lurePower = 10
 end
 
-function Hook:isCloseTo(entity)
-    return (self.sprite.position:distanceToPoint(entity.sprite.position) <
-               self.lurePower)
-end
+function Hook:isCloseTo(entity) return self.sprite:overlapsWith(entity.sprite) end
