@@ -3,8 +3,8 @@ import "CoreLibs/keyboard"
 import "CoreLibs/object"
 import "lib/Screen"
 import "models/Hero"
-import "components/Form"
-import "components/TextInput"
+import "lib/components/Form"
+import "lib/components/TextInput"
 import "gameState"
 
 local gfx<const> = playdate.graphics

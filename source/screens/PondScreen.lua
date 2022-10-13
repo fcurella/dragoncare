@@ -2,8 +2,8 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 
 import "lib/Screen"
-import "models/Fish"
-import "models/Hook"
+import "controllers/Fish"
+import "controllers/Hook"
 
 local gfx<const> = playdate.graphics
 
@@ -13,17 +13,21 @@ function PondScreen:onLoad(state)
     gfx.clear()
     print("loaded test")
     self.fish = {Fish(50)}
-    self.hook = Hook()
+    local center = playdate.geometry.point.new(200, 100)
+    self.hook = Hook(center)
 end
 
 function PondScreen:onUpdate()
-    self.hook:update()
+    self.hook.sprite:update(5)
     playdate.display.setInverted(false)
     for i, fish in ipairs(self.fish) do
-        fish:update()
+        fish.sprite:update(15)
         if (self.hook:isCloseTo(fish)) then
-            playdate.display.setInverted(true)
             fish:startEating()
+            playdate.display.setInverted(true)
+            self.hook.sprite:resume()
+        else
+            self.hook.sprite:pause()
         end
     end
 end

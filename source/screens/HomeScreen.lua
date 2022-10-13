@@ -1,14 +1,14 @@
 import "CoreLibs/graphics"
 import "CoreLibs/object"
 import "lib/Screen"
-import "components/Button"
-import "components/Form"
+import "lib/components/Button"
+import "lib/components/Form"
 import "gameState"
 
 local gfx<const> = playdate.graphics
 
-function goToPlayer() gameState.router:push("newPlayer") end
-function goToPond() gameState.router:push("pond") end
+local function goToPlayer() gameState.router:push("newPlayer") end
+local function goToPond() gameState.router:push("pond") end
 
 class('HomeScreen').extends(Screen)
 function HomeScreen:onLoad(state)
