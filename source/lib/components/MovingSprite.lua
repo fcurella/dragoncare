@@ -18,6 +18,11 @@ function MovingSprite:init(x, y, imagePath, movement)
     self.position = self.start
 end
 
+function MovingSprite:remove()
+    self.movement:pause()
+    self.sprite:remove()
+end
+
 function MovingSprite:overlappingSprites()
     return self.sprite:overlappingSprites()
 end

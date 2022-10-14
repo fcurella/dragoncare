@@ -1,10 +1,10 @@
 import "lib/components/MovingSprite"
 import "lib/movements/CluelessWanderer"
-import "models/Food"
+import "models/Fish"
 
-class('Fish').extends()
-function Fish:init(nutritionalValue)
-    Food.super.init(self)
+class('FishController').extends()
+function FishController:init(nutritionalValue)
+    FishController.super.init(self)
 
     local x = math.random(10, 390)
     local y = math.random(10, 190)
@@ -15,17 +15,9 @@ function Fish:init(nutritionalValue)
     local imagePath = "assets/bubbles"
     self.sprite = MovingSprite(position.x, position.y, imagePath, movement)
 
-    self.food = Food(nutritionalValue)
-
-    self.age = 0
-    self.maxAge = math.random(3, 10)
-    self.hunger = math.random(3, 10)
+    self.model = Fish(nutritionalValue)
 end
 
-function Fish:startEating()
-    self.sprite:pause()
-    playdate.timer.new(self.hunger * 1000,
-                       function(fish) fish:finishEating() end, self)
+function FishController:remove()
+    self.sprite:remove()
 end
-
-function Fish:finishEating() self.sprite:resume() end
