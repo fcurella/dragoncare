@@ -17,7 +17,13 @@ function PondScreen:onLoad(state)
 end
 
 function PondScreen:onUpdate()
-    self.hook.sprite:update(5)
+
+    if (#self.fish == 0) then
+        self.hook.sprite:pause()
+    else
+        self.hook.sprite:update(5)
+    end
+
     playdate.display.setInverted(false)
     for i, fish in ipairs(self.fish) do
         fish.sprite:update(15)

@@ -19,6 +19,7 @@ function MovingSprite:init(x, y, imagePath, movement)
 end
 
 function MovingSprite:remove()
+    self.position = playdate.geometry.point.new(-99, -99)
     self.movement:pause()
     self.sprite:remove()
 end
