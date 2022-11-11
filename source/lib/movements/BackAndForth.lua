@@ -5,7 +5,7 @@ import "lib/movements/GoStraight"
 
 class("BackAndForth").extends(GoStraight)
 
-function BackAndForth:updateLocation(speed)
+function BackAndForth:updatePosition(speed)
     if (self.position:distanceToPoint(self.target) < self.tolerance) then
         self.origin, self.target = self.target, self.origin
     end
@@ -15,6 +15,5 @@ function BackAndForth:updateLocation(speed)
     local y = math.floor(self.position.y + distance.dy)
 
     local point = playdate.geometry.point.new(x, y)
-    self:setPosition(point)
     return point
 end

@@ -8,7 +8,4 @@ function StickTo:init(otherMovement)
     StickTo.super.init(self, otherMovement.origin, otherMovement.target)
 end
 
-function StickTo:updateLocation(speed)
-    self:setPosition(self.otherMovement.position)
-    return point
-end
+function StickTo:updatePosition(speed) return self.otherMovement.position end

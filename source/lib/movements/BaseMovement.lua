@@ -31,8 +31,11 @@ function BaseMovement:pause() self.running = false end
 function BaseMovement:resume() self.running = true end
 
 function BaseMovement:update(speed)
-    if (self.running) then self:updateLocation(speed) end
+    if (self.running) then
+        local position = self:updatePosition(speed)
+        self:setPosition(position)
+    end
     return self.position
 end
 
-function BaseMovement:updateLocation(speed) end
+function BaseMovement:updatePosition(speed) return self.position end
