@@ -26,6 +26,8 @@ function BaseMovement:setPosition(point)
     self.normal = self.v:normalized()
 end
 
+function BaseMovement:getPosition() return self.position end
+
 function BaseMovement:pause() self.running = false end
 
 function BaseMovement:resume() self.running = true end
